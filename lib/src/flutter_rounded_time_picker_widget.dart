@@ -1534,8 +1534,12 @@ class _TimePickerDialog extends StatefulWidget {
       this.positiveBtn,
       this.leftBtn,
       this.onLeftBtn,
+      this.width,
+      this.height,
       this.style})
       : super(key: key);
+  final double? width;
+  final double? height;
 
   /// The time initially selected when the dialog is shown.
   final TimeOfDay initialTime;
@@ -1767,8 +1771,8 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
           switch (orientation) {
             case Orientation.landscape:
               return SizedBox(
-                width: _kTimePickerWidthLandscape,
-                height: timePickerHeightLandscape,
+                width: this.widget.width ?? _kTimePickerWidthLandscape,
+                height: this.widget.height ?? timePickerHeightLandscape,
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1783,8 +1787,8 @@ class _TimePickerDialogState extends State<_TimePickerDialog> {
             case Orientation.portrait:
             default:
               return SizedBox(
-                width: _kTimePickerWidthPortrait,
-                height: timePickerHeightPortrait,
+                width: this.widget.width ?? _kTimePickerWidthPortrait,
+                height: this.widget.height ?? timePickerHeightPortrait,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -1883,6 +1887,8 @@ Future<TimeOfDay?> showRoundedTimePicker({
   required TimeOfDay initialTime,
   ThemeData? theme,
   Locale? locale,
+  double? width,
+  double? height,
   double borderRadius = 16.0,
   ImageProvider? imageHeader,
   String? fontFamily,
@@ -1903,16 +1909,17 @@ Future<TimeOfDay?> showRoundedTimePicker({
   assert(debugCheckHasMaterialLocalizations(context));
 
   final Widget dialog = _TimePickerDialog(
-    initialTime: initialTime,
-    borderRadius: borderRadius,
-    imageHeader: imageHeader,
-    fontFamily: fontFamily,
-    negativeBtn: negativeBtn,
-    positiveBtn: positiveBtn,
-    leftBtn: leftBtn,
-    onLeftBtn: onLeftBtn,
-    style: style,
-  );
+      initialTime: initialTime,
+      borderRadius: borderRadius,
+      imageHeader: imageHeader,
+      fontFamily: fontFamily,
+      negativeBtn: negativeBtn,
+      positiveBtn: positiveBtn,
+      leftBtn: leftBtn,
+      onLeftBtn: onLeftBtn,
+      style: style,
+      width: width,
+      height: height);
 
   Widget child = GestureDetector(
     onTap: () {

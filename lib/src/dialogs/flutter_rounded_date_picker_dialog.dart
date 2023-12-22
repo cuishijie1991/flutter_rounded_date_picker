@@ -12,6 +12,7 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
   const FlutterRoundedDatePickerDialog(
       {Key? key,
       this.height,
+      this.width,
       required this.initialDate,
       required this.firstDate,
       required this.lastDate,
@@ -44,6 +45,7 @@ class FlutterRoundedDatePickerDialog extends StatefulWidget {
 
   /// double height.
   final double? height;
+  final double? width;
 
   /// Custom era year.
   final EraMode era;
@@ -271,7 +273,8 @@ class _FlutterRoundedDatePickerDialogState
                 children: <Widget>[
                   Flexible(flex: 1, child: header),
                   Flexible(
-                    flex: 2, // have the picker take up 2/3 of the dialog width
+                    flex: 2,
+                    // have the picker take up 2/3 of the dialog width
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -296,10 +299,11 @@ class _FlutterRoundedDatePickerDialogState
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   header,
-                  if (widget.height == null)
+                  if (widget.height == null && widget.width == null)
                     Flexible(child: picker)
                   else
                     SizedBox(
+                      width: widget.width,
                       height: widget.height,
                       child: picker,
                     ),
