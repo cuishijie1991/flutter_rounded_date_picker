@@ -819,7 +819,7 @@ class _TimePickerHeader extends StatelessWidget {
     Color inactiveColor;
     switch (themeData.brightness) {
       case Brightness.light:
-        activeColor = Colors.black87;
+        activeColor = themeData.accentColor;
         inactiveColor = Colors.black54;
         break;
       case Brightness.dark:
