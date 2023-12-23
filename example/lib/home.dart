@@ -68,6 +68,8 @@ class _HomeState extends State<Home> {
                       initialDate: DateTime.now(),
                       firstDate: DateTime(DateTime.now().year - 1),
                       lastDate: DateTime(DateTime.now().year + 1),
+                      width: 400,
+                      height: 300,
                       borderRadius: 2,
                     );
                     print(newDateTime);
@@ -337,7 +339,8 @@ class _HomeState extends State<Home> {
                         context: context,
                         theme: ThemeData(primarySwatch: Colors.pink),
                         styleDatePicker: MaterialRoundedDatePickerStyle(
-                            textStyleDayButton: TextStyle(color: Colors.white)));
+                            textStyleDayButton:
+                                TextStyle(color: Colors.white)));
                     if (newDateTime != null) {
                       setState(() => dateTime = newDateTime);
                     }

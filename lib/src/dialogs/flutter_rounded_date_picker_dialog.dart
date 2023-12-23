@@ -263,6 +263,8 @@ class _FlutterRoundedDatePickerDialogState
         switch (orientation) {
           case Orientation.landscape:
             return Container(
+              width: widget.width,
+              height: widget.height,
               decoration: BoxDecoration(
                 color: backgroundPicker,
                 borderRadius: BorderRadius.circular(widget.borderRadius),
